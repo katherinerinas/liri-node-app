@@ -35,7 +35,15 @@ console.log(queryUrl);
 request(queryUrl, function(error, response, body) {
 
 	 } if (!error && response.statusCode === 200) {
+       //console.log("Movie Title: " + JSON.parse(body).Name);
        //console.log("Release Year: " + JSON.parse(body).Year);
+       //console.log("Rating: " + JSON.parse(body).rating);
+       //console.log("Rotten Tomatoes Rating: " + JSON.parse(body).look this up!);
+       //console.log("Country " + JSON.parse(body).Country);
+       //console.log("language: " + JSON.parse(body).language);
+       //console.log("Plot: " + JSON.parse(body).plot);
+       //console.log("actors: " + JSON.parse(body).actors);
+
 
    //     * Title of the movie.
    // * Year the movie came out.
