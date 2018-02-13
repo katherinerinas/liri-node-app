@@ -2,10 +2,10 @@ require("dotenv").config();
 
 
 //add code to import the keys.js file and store it in a variable
-
+var spotify = require()
 
  var spotify = new Spotify(keys.spotify);
-  var client = new Twitter(keys.twitter);
+ var client = new Twitter(keys.twitter);
 
 
 // this ^ should be used to access keys information.
@@ -18,7 +18,44 @@ require("dotenv").config();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //spotify
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -34,15 +71,15 @@ console.log(queryUrl);
 
 request(queryUrl, function(error, response, body) {
 
-	 } if (!error && response.statusCode === 200) {
-       //console.log("Movie Title: " + JSON.parse(body).Name);
-       //console.log("Release Year: " + JSON.parse(body).Year);
-       //console.log("Rating: " + JSON.parse(body).rating);
-       //console.log("Rotten Tomatoes Rating: " + JSON.parse(body).look this up!);
-       //console.log("Country " + JSON.parse(body).Country);
-       //console.log("language: " + JSON.parse(body).language);
-       //console.log("Plot: " + JSON.parse(body).plot);
-       //console.log("actors: " + JSON.parse(body).actors);
+	 });if (!error && response.statusCode === 200) {
+       console.log("Movie Title: " + JSON.parse(body).Name);
+       console.log("Release Year: " + JSON.parse(body).Year);
+       console.log("Rating: " + JSON.parse(body).rating);
+       console.log("Rotten Tomatoes Rating: " + JSON.parse(body).look this up!);
+       console.log("Country " + JSON.parse(body).Country);
+       console.log("language: " + JSON.parse(body).language);
+       console.log("Plot: " + JSON.parse(body).plot);
+       console.log("actors: " + JSON.parse(body).actors);
 
 
    //     * Title of the movie.
@@ -54,4 +91,4 @@ request(queryUrl, function(error, response, body) {
    // * Plot of the movie.
    // * Actors in the movie.
   
-});
+};
