@@ -26,8 +26,10 @@ var params = {
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
       for (var i = 0; i < tweets.length; i++) {
+      console.log('=====================');
       console.log(tweets[i].text);
       console.log(tweets[i].created_at);
+      console.log('=====================');
       }
     }
    });
@@ -39,10 +41,12 @@ if(process.argv[2] == "spotify-this"){
         if (err) {
         return console.log('Error occurred: ' + err);
         }
+    console.log('==================================================');
     console.log("Band Name:" + data.tracks.items[0].artists[0].name);
     console.log("Song Name:" + data.tracks.items[0].name);
     console.log("Album Name:" + data.tracks.items[0].album.name);
     console.log("Link to song:" +" "+ data.tracks.items[0].preview_url);
+    console.log('==================================================');
       });
 
 }
@@ -52,7 +56,7 @@ if(process.argv[2] == "spotify-this"){
    
 
  if (process.argv[2]==="movie-this"){
-
+var userChoice=process.argv[3];
 var getMovie= function(movieName){
 
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -63,7 +67,7 @@ request(queryUrl, function(error, response, body) {
  
 	  if (!error && response.statusCode === 200) {
       var omdbData=JSON.parse(body);
-      
+         console.log('========================================');
          console.log("Movie Title: " + JSON.parse(body).Title);
          console.log("Release Year: " + JSON.parse(body).Year);
          console.log("OMDBRating: " + JSON.parse(body).Rated);
@@ -72,22 +76,32 @@ request(queryUrl, function(error, response, body) {
          console.log("Language: " + JSON.parse(body).Language);
          console.log("Plot: " + JSON.parse(body).Plot);
          console.log("Actors: " + JSON.parse(body).Actors);
+         console.log('========================================');
 
-         
          }
+
+
       });
-  };
+     };
+
+         getMovie(userChoice);
+
 };
 
 
 if (process.argv[2]=="do-what-it-says"){
-  fs.readFile("random.txt", "utf8", function(error, data){
+
+    fs.readFile("random.txt", "utf8", function(error, data){
      if (error) {
      return console.log(error);
-     console.log(data);
+   
 
     }
+    console.log('========================================');
+    console.log(data);
+    console.log('========================================');
   });
+    
 };
 
   
