@@ -70,7 +70,7 @@ request(queryUrl, function(error, response, body) {
          console.log('========================================');
          console.log("Movie Title: " + JSON.parse(body).Title);
          console.log("Release Year: " + JSON.parse(body).Year);
-         console.log("OMDBRating: " + JSON.parse(body).Rated);
+         console.log("OMDB Rating: " + JSON.parse(body).Rated);
          console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
          console.log("Country: " + JSON.parse(body).Country);
          console.log("Language: " + JSON.parse(body).Language);
