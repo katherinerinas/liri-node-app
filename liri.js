@@ -11,39 +11,40 @@ require("dotenv").config();
   var client = new Twitter(keys.twitter);
 
 
-// this ^ should be used to access keys information.
 
-// //Twitter
+ var action = process.argv[2];
+ var value = process.argv[3];
 
 
-if (process.argv[2]=="my-tweets"){
+//this is the twitter section 
+if (process.argv[2] == "my-tweets"){
 
-var params = {screen_name: 'GingerVitis230'};
+var params = {
+       screen_name: 'GingerVitis230',
+       count: 20
+     }
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
-  console.log(tweets[0].text);
-  //console.log(tweets[].text); 
- 
-}
-   
+      for (var i = 0; i < tweets.length; i++) {
+      console.log(tweets[i].text);
+      console.log(tweets[i].created_at);
+      }
+    }
+   });
+ };
 
-	
-
-
-        
-    }); 
-  };
-
-
-// //spotify
-
-if(process.argv[2] == "spotify-this-song"){
+// spotify
+if(process.argv[2] == "spotify-this"){
     spotify.search({ type: 'track', query: process.argv[3] }, function(err, data) {
         if (err) {
-          return console.log('Error occurred: ' + err);
+        return console.log('Error occurred: ' + err);
         }
-      console.log(data.tracks.items[0].artists[0].name);
+    console.log("Band Name:" + data.tracks.items[0].artists[0].name);
+    console.log("Song Name:" + data.tracks.items[0].name);
+    console.log("Album Name:" + data.tracks.items[0].album.name);
+    console.log("Link to song:" +" "+ data.tracks.items[0].preview_url);
       });
+
 }
 
 
@@ -72,8 +73,8 @@ request(queryUrl, function(error, response, body) {
          console.log("Plot: " + JSON.parse(body).Plot);
          console.log("Actors: " + JSON.parse(body).Actors);
 
-         getMovie(process.argv[2]);
-       }
+         
+         }
       });
   };
 };
@@ -81,8 +82,7 @@ request(queryUrl, function(error, response, body) {
 
 
 if (process.argv[2]=="do-what-it-says"){
-
- fs.readFile("random.txt", "utf8", function(error, data){
+  fs.readFile("random.txt", "utf8", function(error, data){
      if (error) {
      return console.log(error);
      console.log(data);
