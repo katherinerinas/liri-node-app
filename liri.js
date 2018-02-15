@@ -80,7 +80,6 @@ request(queryUrl, function(error, response, body) {
 };
 
 
-
 if (process.argv[2]=="do-what-it-says"){
   fs.readFile("random.txt", "utf8", function(error, data){
      if (error) {
