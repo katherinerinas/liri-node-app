@@ -12,3 +12,9 @@ The command "node liri.js movie-this < movie name>" will pull up information on 
 The command "node liri.js do-what-it-says" will pull up a random song.
 
 enjoy Liri!!
+
+Languages used:
+
+HTML/CSS/JAVASCRIPT/NODE
+
+<img src="assets/images/liriapp.png" alt="liri">

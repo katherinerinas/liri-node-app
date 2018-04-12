@@ -2,7 +2,7 @@ require("dotenv").config();
   var request = require('request');
   var fs = require('fs');
   var keys=require("./assets/javascript/keys.js");
-// // //add code to import the keys.js file and store it in a variable
+
 
   var Spotify = require('node-spotify-api');
   var Twitter = require('twitter');
@@ -12,11 +12,12 @@ require("dotenv").config();
 
 
 
- var action = process.argv[2];
- var value = process.argv[3];
+  var action = process.argv[2];
+  var value = process.argv[3];
 
 
-//this is the twitter section 
+//this is the twitter section:
+
 if (process.argv[2] == "my-tweets"){
 
 var params = {
@@ -31,12 +32,16 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
       console.log(tweets[i].created_at);
       console.log('=====================');
       }
-    }
+     }
    });
  };
 
-// spotify
+
+//this is the spotify section:
+
 if(process.argv[2] == "spotify-this"){
+  var userMusic=process.argv[3];
+  var getMusic= function(trackName){
     spotify.search({ type: 'track', query: process.argv[3] }, function(err, data) {
         if (err) {
         return console.log('Error occurred: ' + err);
@@ -48,11 +53,12 @@ if(process.argv[2] == "spotify-this"){
     console.log("Link to song:" +" "+ data.tracks.items[0].preview_url);
     console.log('==================================================');
       });
-
+   };
+   getMusic(userMusic);
 }
 
 
-//OMDB:
+//this is the OMDB section
    
 
  if (process.argv[2]==="movie-this"){
@@ -91,14 +97,36 @@ request(queryUrl, function(error, response, body) {
 
 if (process.argv[2]=="do-what-it-says"){
 
+
     fs.readFile("random.txt", "utf8", function(error, data){
      if (error) {
      return console.log(error);
-   
+ 
 
     }
     console.log('========================================');
-    console.log(data);
+  
+ 
+  var getMusic= function(trackName){
+   userMusic= console.log(data);
+    spotify.search({ type: 'track', query: process.argv[3] }, function(err, data) {
+        if (err) {
+        return console.log('Error occurred: ' + err);
+        }
+        
+    console.log('==================================================');
+    console.log("Band Name:" + data.tracks.items[0].artists[0].name);
+    console.log("Song Name:" + data.tracks.items[0].name);
+    console.log("Album Name:" + data.tracks.items[0].album.name);
+    console.log("Link to song:" +" "+ data.tracks.items[0].preview_url);
+    console.log('==================================================');
+      
+      });
+   };
+      getMusic(userMusic);
+
+
+
     console.log('========================================');
   });
     
